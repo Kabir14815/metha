@@ -5,13 +5,13 @@ const Doctors = () => {
     {
       name: 'Dr. Sunil Mehta',
       specialty: 'Neonatology, Pediatrics',
-      image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300&h=300&fit=crop&crop=face',
+      image: '/dr-sunil-mehta.jpg',
       social: { facebook: '#', twitter: '#', linkedin: '#', instagram: '#' }
     },
     {
       name: 'Dr. Neera Verma',
       specialty: 'OBS/Gynecology',
-      image: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=300&h=300&fit=crop&crop=face',
+      image: '/dr-neera-verma.jpg',
       social: { facebook: '#', twitter: '#', linkedin: '#', instagram: '#' }
     },
     {

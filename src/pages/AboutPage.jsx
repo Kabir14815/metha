@@ -58,14 +58,14 @@ const AboutPage = () => {
       name: 'Dr. Sunil Mehta',
       role: 'Founder & Chief Medical Officer',
       specialty: 'Neonatology, Pediatrics',
-      image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300&h=300&fit=crop&crop=face',
+      image: '/dr-sunil-mehta.jpg',
       description: 'With over 20 years of experience, Dr. Sunil Mehta founded Mehta Hospital with a vision to provide quality healthcare accessible to all.'
     },
     {
       name: 'Dr. Neera Verma',
       role: 'Director of Women\'s Health',
       specialty: 'OBS/Gynecology',
-      image: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=300&h=300&fit=crop&crop=face',
+      image: '/dr-neera-verma.jpg',
       description: 'Dr. Neera Verma leads our obstetrics and gynecology department with expertise and a patient-first approach.'
     }
   ];

@@ -46,7 +46,7 @@
 
 .process-card:hover .process-img {
   border-color: var(--color-primary);
-  box-shadow: 0 0 30px rgba(249, 115, 22, 0.3);
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.2);
   transform: scale(1.05);
 }
 

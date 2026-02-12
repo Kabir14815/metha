@@ -59,7 +59,7 @@ const About = () => {
             </div>
             <div className="doctor-frame">
               <img 
-                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=500&fit=crop" 
+                src="/dr-sunil-mehta.jpg" 
                 alt="Dr. Mehta - Chief Medical Officer" 
                 className="doctor-image"
               />

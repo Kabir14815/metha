@@ -20,7 +20,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(249, 115, 22, 0.15) 0%, transparent 50%);
+  background: radial-gradient(ellipse at 30% 50%, rgba(249, 115, 22, 0.08) 0%, transparent 50%);
 }
 
 .about-hero-content {
@@ -349,7 +349,7 @@
 }
 
 .cta-buttons .btn-primary:hover {
-  background: var(--color-bg-primary);
+  background: #f1f5f9;
 }
 
 .cta-buttons .btn-outline {

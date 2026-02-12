@@ -34,7 +34,7 @@
 .doctor-card:hover {
   transform: translateY(-10px);
   border-color: var(--color-primary);
-  box-shadow: var(--shadow-xl), 0 0 30px rgba(249, 115, 22, 0.15);
+  box-shadow: var(--shadow-xl), 0 0 30px rgba(249, 115, 22, 0.1);
 }
 
 /* Doctor Image */
@@ -56,7 +56,7 @@
 
 .doctor-card:hover .doctor-img {
   border-color: var(--color-primary);
-  box-shadow: 0 0 30px rgba(249, 115, 22, 0.3);
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.2);
 }
 
 /* Doctor Overlay */
