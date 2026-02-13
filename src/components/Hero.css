@@ -88,7 +88,7 @@
   align-items: center;
   gap: 2rem;
   padding: 1.5rem 2rem;
-  background: #eef1f6;
+  background: rgba(17, 24, 39, 0.8);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(148, 163, 184, 0.35);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -114,7 +114,7 @@
 .stat-divider {
   width: 1px;
   height: 40px;
-  background: rgba(148, 163, 184, 0.4);
+  background: rgba(148, 163, 184, 0.3);
 }
 
 /* Visual Section */
