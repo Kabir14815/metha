@@ -78,7 +78,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-primary-light);
+  background: rgba(249, 115, 22, 0.1);
   border-radius: 50%;
   transition: all var(--transition-base);
 }
