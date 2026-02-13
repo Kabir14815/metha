@@ -62,7 +62,7 @@ const Hero = () => {
             <div className="image-frame">
               <div className="image-glow"></div>
               <img 
-                src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&h=600&fit=crop" 
+                src="/mehta-hospital.jpg" 
                 alt="Mehta Hospital - Modern healthcare facility in Kharar, Punjab" 
                 className="hospital-image"
                 loading="eager"
