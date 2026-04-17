@@ -49,8 +49,8 @@ const Header = () => {
               className="logo-img"
               src="/mehta-hospital-logo.png"
               alt="Mehta Hospital — In Service of Humanity"
-              width={52}
-              height={52}
+              width={72}
+              height={72}
               decoding="async"
             />
           </Link>

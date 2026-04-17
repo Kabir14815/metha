@@ -40,8 +40,8 @@ const Footer = () => {
                 className="footer-logo-img"
                 src="/mehta-hospital-logo.png"
                 alt="Mehta Hospital — In Service of Humanity"
-                width={64}
-                height={64}
+                width={88}
+                height={88}
                 loading="lazy"
                 decoding="async"
               />
