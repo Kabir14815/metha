@@ -1,5 +1,5 @@
 .about-page {
-  padding-top: 80px;
+  padding-top: calc(80px + var(--banner-height, 36px));
 }
 
 /* Hero Section */
@@ -20,7 +20,9 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(249, 115, 22, 0.08) 0%, transparent 50%);
+  background: radial-gradient(ellipse at 30% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 45%),
+    radial-gradient(ellipse at 70% 50%, rgba(245, 158, 11, 0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 80%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
 }
 
 .about-hero-content {
@@ -388,7 +390,7 @@
 
 @media (max-width: 768px) {
   .about-page {
-    padding-top: 70px;
+    padding-top: calc(70px + var(--banner-height, 36px));
   }
 
   .about-hero {

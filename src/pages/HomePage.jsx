@@ -1,23 +1,19 @@
 import Hero from '../components/Hero'
-import About from '../components/About'
 import Services from '../components/Services'
+import About from '../components/About'
+import WhyChooseUs from '../components/WhyChooseUs'
 import Doctors from '../components/Doctors'
-import Process from '../components/Process'
-import Stats from '../components/Stats'
-import Testimonials from '../components/Testimonials'
-import Blog from '../components/Blog'
+import ContactSection from '../components/ContactSection'
 
 const HomePage = () => {
   return (
     <>
       <Hero />
-      <About />
       <Services />
+      <About />
+      <WhyChooseUs />
       <Doctors />
-      <Process />
-      <Stats />
-      <Testimonials />
-      <Blog />
+      <ContactSection />
     </>
   )
 }

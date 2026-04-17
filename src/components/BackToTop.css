@@ -1,0 +1,29 @@
+.back-to-top {
+  position: fixed;
+  bottom: 6.25rem;
+  right: 1.75rem;
+  z-index: 998;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+  transition: background var(--transition-fast);
+}
+
+.back-to-top:hover {
+  background: var(--color-primary-hover);
+}
+
+@media (max-width: 480px) {
+  .back-to-top {
+    right: 1.25rem;
+    bottom: 5.75rem;
+  }
+}

@@ -58,7 +58,7 @@ const AboutPage = () => {
       name: 'Dr. Sunil Mehta',
       role: 'Founder & Chief Medical Officer',
       specialty: 'Neonatology, Pediatrics',
-      image: '/dr-sunil-mehta.jpg',
+      image: '/dr-sunil-mehta.png',
       description: 'With over 20 years of experience, Dr. Sunil Mehta founded Mehta Hospital with a vision to provide quality healthcare accessible to all.'
     },
     {

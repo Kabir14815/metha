@@ -1,142 +1,106 @@
+import { useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import './About.css';
+import { fadeInLeft, fadeInRight } from '../utils/animations';
+
+const IMG_TEAM = '/dr-sunil-mehta.png';
+const IMG_LAB =
+  'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=520&h=380&fit=crop&q=80';
 
 const About = () => {
-  const quickActions = [
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-          <line x1="16" y1="2" x2="16" y2="6"/>
-          <line x1="8" y1="2" x2="8" y2="6"/>
-          <line x1="3" y1="10" x2="21" y2="10"/>
-        </svg>
-      ),
-      title: 'Request Appointment',
-      href: '#appointment'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-          <polyline points="9 22 9 12 15 12 15 22"/>
-        </svg>
-      ),
-      title: 'About Hospital',
-      href: '#about'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-          <circle cx="12" cy="10" r="3"/>
-        </svg>
-      ),
-      title: 'Find Locations',
-      href: '#contact'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-        </svg>
-      ),
-      title: 'Emergency Contact',
-      href: 'tel:9855121155'
-    }
-  ];
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section className="about section" id="about">
+    <section className="about about-metha section" id="about" ref={ref}>
       <div className="container">
-        <div className="about-content">
-          {/* Doctor Image */}
-          <div className="about-image">
-            <div className="image-decoration">
-              <div className="deco-line deco-line-1"></div>
-              <div className="deco-line deco-line-2"></div>
-              <div className="deco-dot deco-dot-1"></div>
-              <div className="deco-dot deco-dot-2"></div>
-            </div>
-            <div className="doctor-frame">
-              <img 
-                src="/dr-sunil-mehta.jpg" 
-                alt="Dr. Mehta - Chief Medical Officer" 
-                className="doctor-image"
-              />
-            </div>
-            <div className="experience-badge">
-              <span className="exp-number">15+</span>
-              <span className="exp-text">Years of Excellence</span>
-            </div>
-          </div>
-          
-          {/* About Text */}
-          <div className="about-text">
-            <div className="section-label">About Us</div>
-            <h2 className="about-title">
-              Welcome To <span className="text-gradient">Mehta Hospital</span>
-            </h2>
-            <p className="about-description">
-              At our hospital, we understand that being a patient can be stressful, 
-              so we strive to create a supportive and caring atmosphere for all who 
-              enter our doors. Our team is committed to treating each patient with 
-              respect and dignity, and we work tirelessly to ensure that every person 
-              who comes to us for care receives the best possible treatment.
+        <div className="about-metha-grid">
+          <motion.div
+            className="about-metha-copy"
+            variants={fadeInLeft}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+            custom={0}
+          >
+            <p className="about-metha-label">About us</p>
+            <h2 className="about-metha-title">Committed to excellent healthcare in Punjab</h2>
+            <p className="about-metha-lede">
+              Mehta Hospital combines evidence-based medicine with a practical focus on diet, movement, and follow-up —
+              so treatment plans don’t end at the prescription. We serve families, workers, and seniors who want clear
+              answers and respectful care.
             </p>
-            <p className="about-description">
-              With state-of-the-art facilities and a team of experienced medical 
-              professionals, we provide comprehensive healthcare services to our 
-              community. Your health and wellbeing are our top priorities.
-            </p>
-            
-            <div className="about-features">
-              <div className="feature-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-                <span>Qualified Doctors</span>
+
+            <div className="about-metha-mv">
+              <div className="about-metha-block">
+                <div className="about-metha-icon">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.6">
+                    <path d="M16 4L6 9v10c0 7 5 13 10 15 5-2 10-8 10-15V9L16 4z" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <h3 className="about-metha-block-title">Our mission</h3>
+                <p className="about-metha-block-text">
+                  Accessible, ethical care that improves day-to-day quality of life — not just test results.
+                </p>
               </div>
-              <div className="feature-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-                <span>24/7 Emergency Service</span>
-              </div>
-              <div className="feature-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-                <span>Modern Equipment</span>
-              </div>
-              <div className="feature-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-                <span>Affordable Prices</span>
+              <div className="about-metha-block">
+                <div className="about-metha-icon">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.6">
+                    <circle cx="16" cy="16" r="12" />
+                    <path d="M16 10v12M10 16h12" strokeLinecap="round" />
+                  </svg>
+                </div>
+                <h3 className="about-metha-block-title">Our vision</h3>
+                <p className="about-metha-block-text">
+                  A trusted hospital neighbours recommend — known for safety, coordination, and continuity.
+                </p>
               </div>
             </div>
-          </div>
-          
-          {/* Quick Actions */}
-          <div className="quick-actions">
-            {quickActions.map((action, index) => (
-              <a 
-                key={index} 
-                href={action.href} 
-                className="quick-action-btn"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <span className="action-content">
-                  {action.icon}
-                  <span>{action.title}</span>
+
+            <div className="about-metha-actions">
+              <Link to="/about" className="btn-about-outline">
+                <span>Learn more about us</span>
+                <span className="btn-about-outline-arrow" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
                 </span>
-                <svg className="action-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"/>
-                  <polyline points="12 5 19 12 12 19"/>
+              </Link>
+              <a
+                href="tel:+919855121155"
+                className="btn-about-play"
+                aria-label="Call Mehta Hospital"
+              >
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
                 </svg>
               </a>
-            ))}
-          </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="about-metha-visual"
+            variants={fadeInRight}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+            custom={0.15}
+          >
+            <div className="about-metha-collage">
+              <div className="about-metha-photo about-metha-photo--top">
+                <img src={IMG_TEAM} alt="Dr. Sunil Mehta at Mehta Hospital" width={480} height={320} loading="lazy" />
+              </div>
+              <div className="about-metha-photo about-metha-photo--bl">
+                <img src={IMG_LAB} alt="Laboratory diagnostics" width={360} height={260} loading="lazy" />
+              </div>
+              <div className="about-metha-stat">
+                <div className="about-metha-stat-inner">
+                  <span className="about-metha-stat-num">50K+</span>
+                  <span className="about-metha-stat-label">Patients served</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

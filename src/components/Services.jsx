@@ -1,181 +1,155 @@
+import { useRef, useState } from 'react';
+import { useInView } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Services.css';
 
+const slides = [
+  [
+    {
+      title: 'Annual wellness & check-ups',
+      text: 'Structured health reviews and follow-ups so your vitals, lifestyle risks, and chronic conditions stay on track.',
+      icon: (
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <circle cx="24" cy="14" r="7" />
+          <path d="M12 40c2-9 8-13 12-13s10 4 12 13" strokeLinecap="round" />
+          <path d="M30 22h8M34 18v8" strokeLinecap="round" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Heart & vascular care',
+      text: 'Evaluation and treatment plans for blood pressure, chest discomfort, and circulation — with clear next steps.',
+      icon: (
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M8 22c0-8 8-14 16-6 8-8 16-2 16 6 0 10-16 18-16 18S8 32 8 22z" strokeLinejoin="round" />
+          <path d="M12 26h24" strokeLinecap="round" />
+          <path d="M16 30h4M22 30h4M28 30h4" strokeLinecap="round" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Diagnostics & screening',
+      text: 'Imaging and lab pathways that help catch problems early — explained simply, scheduled conveniently.',
+      icon: (
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <rect x="10" y="8" width="28" height="36" rx="2" />
+          <path d="M14 16h20M14 22h12M14 28h16" strokeLinecap="round" />
+          <path d="M14 34h8M26 34h4" strokeLinecap="round" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Women’s & family health',
+      text: 'Gynecology, maternity support, and child health under one roof for families across Kharar and nearby areas.',
+      icon: (
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <circle cx="18" cy="14" r="5" />
+          <circle cx="30" cy="14" r="5" />
+          <path d="M14 40c2-8 7-12 10-12s8 4 10 12" strokeLinecap="round" />
+        </svg>
+      ),
+    },
+  ],
+  [
+    {
+      title: 'General & laparoscopic surgery',
+      text: 'Planned procedures with emphasis on recovery time, pain control, and clear discharge instructions.',
+      icon: (
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M14 24h20M24 14v20" strokeLinecap="round" />
+          <circle cx="24" cy="24" r="16" />
+        </svg>
+      ),
+    },
+    {
+      title: 'ENT & head–neck',
+      text: 'Hearing, sinus, throat, and allergy concerns managed with thorough examination and sensible treatment options.',
+      icon: (
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M16 20c0-6 4-10 10-10s10 4 10 10v8c0 4-2 8-6 10" strokeLinecap="round" />
+          <path d="M20 36h12" strokeLinecap="round" />
+        </svg>
+      ),
+    },
+    {
+      title: '24/7 emergency response',
+      text: 'Round-the-clock triage for injuries, infections, and acute symptoms — stabilise first, then coordinate care.',
+      icon: (
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M24 8l14 8v16c0 10-6 18-14 20-8-2-14-10-14-20V16l14-8z" strokeLinejoin="round" />
+          <path d="M24 16v16M16 24h16" strokeLinecap="round" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Pediatrics & neonatology',
+      text: 'Gentle care for newborns and children, including NICU support when every hour matters.',
+      icon: (
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <circle cx="24" cy="18" r="8" />
+          <path d="M10 42c2-10 8-14 14-14s12 4 14 14" strokeLinecap="round" />
+        </svg>
+      ),
+    },
+  ],
+];
+
 const Services = () => {
-  const services = [
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-        </svg>
-      ),
-      title: 'General Surgery',
-      description: 'General surgery is a medical specialty that focuses on the surgical treatment of a wide variety of diseases and conditions.',
-      color: '#3b82f6'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-          <line x1="9" y1="9" x2="9.01" y2="9"/>
-          <line x1="15" y1="9" x2="15.01" y2="9"/>
-        </svg>
-      ),
-      title: 'ENT Surgery',
-      description: 'ENT surgery, also known as otolaryngology-head and neck surgery, is a medical specialty focused on ear, nose and throat.',
-      color: '#f97316'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="3"/>
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-        </svg>
-      ),
-      title: 'Laparoscopic Surgery',
-      description: 'Laparoscopic surgery, also known as minimally invasive surgery, is a modern surgical technique that uses small incisions.',
-      color: '#10b981'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-        </svg>
-      ),
-      title: 'Neonatology',
-      description: 'Neonatology is a specialized branch of pediatrics that focuses on the medical care of newborn infants.',
-      color: '#ec4899'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
-      ),
-      title: 'OBS/Gynecology',
-      description: 'OBS/Gynecology is a specialized branch of medicine that focuses on women\'s reproductive health and childbirth.',
-      color: '#8b5cf6'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-          <line x1="9" y1="9" x2="9.01" y2="9"/>
-          <line x1="15" y1="9" x2="15.01" y2="9"/>
-        </svg>
-      ),
-      title: 'Pediatrics',
-      description: 'Pediatrics is a specialized branch of medicine that focuses on the health and medical care of infants, children, and adolescents.',
-      color: '#06b6d4'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/>
-          <path d="M2 20h20"/>
-          <path d="M14 12v.01"/>
-        </svg>
-      ),
-      title: 'Orthopedic',
-      description: 'Orthopedic care is a specialized field of medicine that deals with the diagnosis and treatment of musculoskeletal disorders.',
-      color: '#14b8a6'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-        </svg>
-      ),
-      title: 'Physiotherapy',
-      description: 'Physiotherapy is a healthcare profession that focuses on the assessment, diagnosis, and treatment of physical impairments.',
-      color: '#f59e0b'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/>
-          <line x1="16" y1="17" x2="8" y2="17"/>
-          <polyline points="10 9 9 9 8 9"/>
-        </svg>
-      ),
-      title: 'Laboratory',
-      description: 'Mehta Hospital is committed to providing our patients with the most advanced diagnostic laboratory services.',
-      color: '#6366f1'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-        </svg>
-      ),
-      title: 'Pharmacy',
-      description: 'Mehta Hospital is proud to offer a comprehensive pharmacy service that provides medications and healthcare products.',
-      color: '#22c55e'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-          <line x1="8" y1="21" x2="16" y2="21"/>
-          <line x1="12" y1="17" x2="12" y2="21"/>
-        </svg>
-      ),
-      title: 'Radiology',
-      description: 'Our radiology department offers advanced imaging services including X-rays, CT scans, MRI, and ultrasound.',
-      color: '#64748b'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-          <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-          <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
-          <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
-        </svg>
-      ),
-      title: 'Emergency Care',
-      description: 'Our 24/7 emergency department is equipped to handle all medical emergencies with rapid response and expert care.',
-      color: '#ef4444'
-    }
-  ];
+  const [index, setIndex] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.15 });
 
   return (
-    <section className="services section" id="services">
+    <section className="services services-metha section" id="services" ref={ref}>
       <div className="container">
-        <div className="section-header">
-          <span className="section-label">Departments</span>
-          <h2 className="section-title">Our Medical Services</h2>
-          <p className="section-description">
-            We offer a wide range of medical services to meet all your healthcare needs. 
-            Our team of experienced professionals is dedicated to providing the highest quality care.
+        <motion.div
+          className="services-metha-intro"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="services-metha-heading">Care that fits your life</h2>
+          <p className="services-metha-sub">
+            From preventive visits to urgent needs, Mehta Hospital brings together departments that work as one team
+            for patients in Kharar and the surrounding region.
           </p>
-        </div>
-        
-        <div className="services-grid">
-          {services.map((service, index) => (
-            <div 
-              key={index} 
-              className="service-card"
-              style={{ '--card-color': service.color, animationDelay: `${index * 0.05}s` }}
+        </motion.div>
+
+        <div className="services-carousel">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={index}
+              className="services-slide"
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -24 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="service-icon">
-                {service.icon}
-              </div>
-              <h3 className="service-title">{service.title}</h3>
-              <p className="service-description">{service.description}</p>
-              <a href="#" className="service-link">
-                <span>Details</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"/>
-                  <polyline points="12 5 19 12 12 19"/>
-                </svg>
-              </a>
-            </div>
-          ))}
+              {slides[index].map((item) => (
+                <article key={item.title} className="service-pillar">
+                  <div className="service-pillar-icon" aria-hidden="true">
+                    {item.icon}
+                  </div>
+                  <h3 className="service-pillar-title">{item.title}</h3>
+                  <p className="service-pillar-text">{item.text}</p>
+                </article>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="services-dots" role="tablist" aria-label="Service slides">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                role="tab"
+                aria-selected={i === index}
+                className={`services-dot ${i === index ? 'active' : ''}`}
+                onClick={() => setIndex(i)}
+                aria-label={`Slide ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
