@@ -92,7 +92,7 @@ const Hero = () => {
           <div className="hero-circle-frame">
             <img
               src={HERO_IMG}
-              alt="Dr. Sunil Mehta — physician at Mehta Hospital, Kharar"
+              alt="Professional portrait of Dr. Sunil Mehta with a stethoscope, seated at Mehta Hospital, Kharar"
               className="hero-circle-img hero-circle-img--portrait"
               width={420}
               height={420}

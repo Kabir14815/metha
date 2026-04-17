@@ -88,7 +88,13 @@ const About = () => {
           >
             <div className="about-metha-collage">
               <div className="about-metha-photo about-metha-photo--top">
-                <img src={IMG_TEAM} alt="Dr. Sunil Mehta at Mehta Hospital" width={480} height={320} loading="lazy" />
+                <img
+                  src={IMG_TEAM}
+                  alt="Professional portrait of Dr. Sunil Mehta with a stethoscope at Mehta Hospital"
+                  width={480}
+                  height={320}
+                  loading="lazy"
+                />
               </div>
               <div className="about-metha-photo about-metha-photo--bl">
                 <img src={IMG_LAB} alt="Laboratory diagnostics" width={360} height={260} loading="lazy" />
